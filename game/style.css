@@ -1,0 +1,62 @@
+h1 {
+    color: #DB5461;
+    font-family: 'Nunito', sans-serif;
+    border-bottom: 1px solid #3D5467;
+}
+
+h2 {
+    color: #8AA29E;
+    font-family: 'Nunito', sans-serif;
+    margin-left: 20px;
+}
+
+blockquote {
+    background-color: lightgray;
+    padding: 1rem;
+}
+
+p {
+    margin-left: 60px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color:#3D5467;
+}
+
+main, header, footer {
+    border: 1px solid #000000;
+    margin: 0 auto;
+    width: 80vw;
+    padding: 2rem;
+    background-color: #F1EDEE;
+}
+
+footer {
+    background-color: #686963;
+}
+
+img.side {
+    float: right;
+    margin: 0 124px;
+}
+
+hr {
+    color: #3D5467;
+}
+
+a:link {
+    color: #3D5467;
+}
+
+a:visited {
+    color: #DB5461;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+a:active {
+    color: blue;
+} 
