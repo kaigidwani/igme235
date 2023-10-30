@@ -1,11 +1,55 @@
+html {
+    background-color: lightyellow;
+}
+
+nav>a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
 #grid-container {
     display: grid;
-    grid-template-rows: 10% 60% 30%;
+    grid-template-rows: 1% 1% 1% 5fr 5fr 5fr 5fr;
     grid-template-columns: 1fr 1fr;
-    padding: 1%;
-    gap: 3%;
+    grid-template-areas: "navbar navbar"
+                         "header-left header-left"
+                         "header-right header-right"
+                         "main-right main-right"
+                         "main-left main-left"
+                         "footer-left footer-left"
+                         "footer-right footer-right";
     max-width: 1000px;
     margin: 0 auto;
+}
+
+@media screen and (min-width: 760px) {
+    #grid-container {
+        grid-template-rows: 10% 50% 40%;
+        grid-template-columns: 10% 45% 45%;
+        grid-template-areas: "navbar header-left header-right"
+                             "navbar main-left main-right"
+                             "navbar footer-left footer-right";
+        padding: 1%;
+        gap: 3%;
+    }
+
+    nav>a {
+        float: none;
+    }
+}
+
+nav {
+    grid-area: navbar;
+    overflow: hidden;
+    background-color: goldenrod;
+}
+
+#header-left{
+    grid-area: header-left;
 }
 
 #header-left>h2 {
@@ -13,6 +57,10 @@
     background-color: lightsalmon;
     padding: 5px;
     width: fit-content;
+}
+
+#header-right{
+    grid-area: header-right;
 }
 
 #header-right>h3 {
@@ -23,6 +71,7 @@
 }
 
 #main-left {
+    grid-area: main-left;
     display: grid;
     grid-template-rows: 2fr 1fr 2fr;
     grid-template-columns: 1fr 1fr;
@@ -39,6 +88,10 @@
     margin-left: 30%;
 }
 
+#main-right{
+    grid-area: main-right;
+}
+
 #main-right>h1 {
     font-size: 3em;
 }
@@ -48,12 +101,12 @@
 }
 
 #footer-left {
+    grid-area: footer-left;
     margin-left: 30%;
 }
 
-#footer-left-img {
-    width: 50%;
-    height: auto;
+#footer-right{
+    grid-area: footer-right;
 }
 
 #footer-right>img {
