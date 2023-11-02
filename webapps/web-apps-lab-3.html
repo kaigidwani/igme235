@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps-4-HW</title>
+	<style>
+		body{border:1px solid gray;}
+	</style>
+</head>
+<body>
+<h1>My Favorites</h1>
+<h2>My Favorite Colors</h2>
+
+<ol id="colorsList">
+	
+</ol>
+
+<h2>My Favorite Foods</h2>
+
+<ol id="foodsList">
+	
+</ol>
+
+<h2>My Favorite Links</h2>
+
+<ol id="linksList">
+	
+</ol>
+
+<script>
+"use strict";
+let colors = ["red","green","blue","purple","pink"];
+let foods = ["burnger", "pasta", "salad", "cookie", "apple", "carrots"];
+
+// Get the colors list
+let colorsList = document.getElementById("colorsList");
+
+// Loop through the colors array using a for loop
+for (let i = 0; i < colors.length; i++)
+{
+    // Create a list item
+    let li = document.createElement("li");
+
+    // Set the text content of the list item to the color
+    li.textContent = colors[i];
+
+    // Append the list item to the colors list
+    colorsList.appendChild(li);
+}
+
+// Get the foods list
+let foodsList = document.getElementById("foodsList");
+
+// Loop through the foods array using a for...of loop
+for (let food of foods)
+{
+    // Create a list item
+    let li = document.createElement("li");
+
+    // Set the text content of the list item to the food
+    li.textContent = food;
+
+    // Append the list item to the foods list 
+    foodsList.appendChild(li);
+}
+
+// Optional - can you figure out how to pull both the key AND the value
+// from the `links` object literal?
+let links = {
+		"RIT": "http://www.rit.edu",
+		"RWAG" : "https://www.facebook.com/RWAGclub",
+		"New Media Club" : "http://newmediaclub.cias.rit.edu",
+        "Google": "https://www.google.com",
+        "GitHub": "https://github.com",
+        "YouTube": "https://www.youtube.com"
+    }
+
+// Get the links list
+let linksList = document.getElementById("linksList");
+
+// Loop through the links object using a for...in loop
+for (let key in links) {
+    if (links.hasOwnProperty(key)) {
+        // Create a list item
+        let li = document.createElement("li");
+
+        // Create an anchor element (link) with the key as the text and value as the href
+        let a = document.createElement("a");
+        a.href = links[key];
+        a.textContent = key;
+
+        // Append the anchor element to the list item
+        li.appendChild(a);
+
+        // Append the list item to the links list
+        linksList.appendChild(li);
+    }
+}
+</script>
+</body>
+</html>

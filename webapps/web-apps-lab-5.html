@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps-5</title>
+	<style>
+		body {
+			font-family: sans-serif;
+		}
+		#colorform {
+			background-color: #dfecdf;
+			color: #111;
+			padding: 1em;
+			width: 400px;
+		}
+		#colorform p#info {
+			background-color: white;
+			color: black;
+			width: 300px;
+			height: 100px;
+			padding: 0.5em;
+		}
+		#colorform legend {
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+	</style>
+</head>
+<body>
+	<div id="colorform">
+		<legend>Choose your favorite color!</legend>
+		<p>
+			<input type="radio" name="colorGroup" id="colorGroupRed" value="red" /> Red
+		</p>
+		<p>
+			<input type="radio" name="colorGroup" id="colorGroupGreen" value="green" /> Green
+		</p>
+		<p>
+			<input type="radio" name="colorGroup" id="colorGroupBlue" value="blue" /> Blue
+		</p>
+		<p><button id="colorButton" type="button">Submit</button></p>
+		<p id="info"></p>
+	</div>
+
+	<script>
+	// Get references
+	const radioButtons = document.querySelectorAll('input[type="radio"][name="colorGroup"]');
+	const legend = document.querySelector('legend');
+	const infoParagraph = document.getElementById('info');
+	const colorButton = document.getElementById('colorButton');
+
+	// Add a change event listener for each radio button
+	radioButtons.forEach((radio) => {
+		radio.addEventListener('change', (e) => {
+			// Update the info paragraph text to the selected color
+			infoParagraph.textContent = `You have selected: ${e.target.value}`;
+		});
+	});
+
+	// Add a click event listener to the "Submit" button
+	colorButton.addEventListener('click', () => {
+		// Find the checked radio button
+		const selectedColor = Array.from(radioButtons).find((radio) => radio.checked);
+
+		if (selectedColor) {
+			// Set the background color of the legend to the selected color
+			legend.style.color = selectedColor.value;
+			infoParagraph.textContent = `You chose ${selectedColor.value}!`;
+		} else {
+			infoParagraph.textContent = 'Please select a color.';
+		}
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps-4-HW</title>
+	<style>
+		body{border:1px solid gray;}
+	</style>
+</head>
+<body>
+<h1>My Favorites</h1>
+<h2>My Favorite Colors</h2>
+
+<ol id="colorsList">
+	
+</ol>
+
+<h2>My Favorite Foods</h2>
+
+<ol id="foodsList">
+	
+</ol>
+
+<h2>My Favorite Links</h2>
+
+<ol id="linksList">
+	
+</ol>
+
+<script>
+"use strict";
+
+// Function to create a list from an array and append it to the specified element
+function createList(listElement, array = ["puppydogs", "butterflies", "lollipops"]) {
+    for (let item of array) {
+        let li = document.createElement("li");
+        li.textContent = item;
+        listElement.appendChild(li);
+    }
+}
+
+// Get the list elements by their IDs and call createList to populate them
+let colorsList = document.getElementById("colorsList");
+let foodsList = document.getElementById("foodsList");
+let linksList = document.getElementById("linksList");
+
+createList(colorsList, ["red", "green", "blue", "purple", "pink"]);
+createList(foodsList, ["burger", "pasta", "salad", "cookie", "apple", "carrots"]);
+
+</script>
+</body>
+</html>
