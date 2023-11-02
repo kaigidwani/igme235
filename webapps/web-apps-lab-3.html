@@ -69,33 +69,12 @@ for (let food of foods)
 let links = {
 		"RIT": "http://www.rit.edu",
 		"RWAG" : "https://www.facebook.com/RWAGclub",
-		"New Media Club" : "http://newmediaclub.cias.rit.edu",
-        "Google": "https://www.google.com",
-        "GitHub": "https://github.com",
-        "YouTube": "https://www.youtube.com"
-    }
+		"New Media Club" : "http://newmediaclub.cias.rit.edu"
+	}
 
-// Get the links list
-let linksList = document.getElementById("linksList");
 
-// Loop through the links object using a for...in loop
-for (let key in links) {
-    if (links.hasOwnProperty(key)) {
-        // Create a list item
-        let li = document.createElement("li");
 
-        // Create an anchor element (link) with the key as the text and value as the href
-        let a = document.createElement("a");
-        a.href = links[key];
-        a.textContent = key;
 
-        // Append the anchor element to the list item
-        li.appendChild(a);
-
-        // Append the list item to the links list
-        linksList.appendChild(li);
-    }
-}
 </script>
 </body>
 </html>
