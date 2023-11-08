@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Biome Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('background-image.jpg');
+            background-size: cover;
+            font-family: 'Playpen Sans', cursive;
+            text-align: center;
+            color: #eee;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .container {
+            padding: 20px;
+            color: #333;
+        }
+
+        #random-phrase {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        #random-phrase-button {
+            background-color: #3498db;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #random-phrase-button:hover {
+            background-color: #2980b9;
+        }
+
+        #random-phrase-button:active {
+            background-color: #2076a8;
+        }
+        
+        #image-credit {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kai's Random Biome Generator</h1>
+    </header>
+    <div class="container">
+        <strong><p id="random-phrase"></p></strong>
+        <button id="random-phrase-button">Get Random Biome</button>
+    </div>
+
+    <p id="image-credit">
+        Image by
+        <a href="https://pixabay.com/users/hunt-er-13068062/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5627504">
+            Pawel Grzegorz
+        </a>
+         from 
+         <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5627504">
+            Pixabay
+        </a>
+    </p>
+
+
+    <script>
+        const phrases = [
+            "Forest",
+            "Rainforest",
+            "Swamp",
+            "Desert",
+            "Grassland",
+            "Tundra",
+            "Mountains",
+            "Caverns",
+            "Acquatic"
+        ];
+
+        const randomPhraseElement = document.getElementById("random-phrase");
+        const randomPhraseButton = document.getElementById("random-phrase-button");
+
+        function getRandomPhrase() {
+            const randomIndex = Math.floor(Math.random() * phrases.length);
+            return phrases[randomIndex];
+        }
+
+        function displayQuote() {
+            const randomPhrase = getRandomPhrase();
+            randomPhraseElement.textContent = randomPhrase;
+        }
+
+        // Initial random phrase display
+        displayQuote();
+
+        // Add click event listener to the button
+        randomPhraseButton.addEventListener("click", displayQuote);
+    </script>
+</body>
+</html>
