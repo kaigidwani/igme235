@@ -15,12 +15,9 @@ function searchButtonClicked() {
 
     whichPokemonCounter = 0;
 
-    //let GIPHY_KEY = "5PuWjWVnwpHUQPZK866vd7wQ2qeCeqg7";
-
     firsturl = POKEAPI_URL;
     secondurl = POKEAPI_URL;
     
-    //url += "api_key=" + POKEAPI_URL;
 
     let firstterm = document.querySelector("#firstsearchterm").value;
     let secondterm = document.querySelector("#secondsearchterm").value;
