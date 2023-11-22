@@ -11,6 +11,12 @@ let whichPokemonCounter = 0;
 function searchButtonClicked() {
     console.log("searchButtonClicked() called");
 
+    let contentElement = document.querySelector('#content');
+    let backgroundOption = document.querySelector("#background-option").value;
+    contentElement.style.backgroundImage = `url(../images/${backgroundOption})`;
+    console.log(`Changed background to image at ../images/${backgroundOption}`);
+
+
     const POKEAPI_URL = "https://pokeapi.co/api/v2/";
 
     whichPokemonCounter = 0;
@@ -35,10 +41,6 @@ function searchButtonClicked() {
     firsturl += "pokemon/" + firstterm;
     secondurl += "pokemon/" + secondterm;
 
-    let contentElement = document.querySelector('#content');
-    let backgroundOption = document.querySelector("#background-option").value;
-    contentElement.style.backgroundImage = `url(../images/${backgroundOption})`;
-
 
     document.querySelector("#status").innerHTML = "<b>Searching for '" + displayTerm + "'</b>";
 
@@ -52,7 +54,7 @@ function searchButtonClicked() {
 
 function getData(url) {
     let xhr = new XMLHttpRequest();
-    
+
     xhr.onload = dataLoaded;
 
     xhr.onerror = dataError;
@@ -68,7 +70,7 @@ function dataLoaded(e) {
 
     let obj = JSON.parse(xhr.responseText);
 
-    
+    console.log(obj);
 
     console.log(obj.sprites.back_default);
     
