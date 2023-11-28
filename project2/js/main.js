@@ -7,49 +7,86 @@ let displayTerm = "";
 
 let whichPokemonCounter = 0;
 
+// === Load saved data if it exists! ===
+const yourPokemonField = document.querySelector("#firstsearchterm");
+const enemyPokemonField = document.querySelector("#secondsearchterm");
+const chosenBackgroundSelect = document.querySelector("#background-option");
+const contentElement = document.querySelector('#content');
+
+const prefix = "kpg8244-";
+const yourPokemonKey = prefix + "yourPokemon";
+const enemyPokemonKey = prefix + "enemyPokemon";
+const chosenBackgroundKey = prefix + "chosenBackground";
+
+// grab the stored data, will return `null` if the user has never been to this page
+const storedYourPokemon = localStorage.getItem(yourPokemonKey);
+const storedEnemyPokemon = localStorage.getItem(enemyPokemonKey);
+const storedChosenBackground = localStorage.getItem(chosenBackgroundKey);
+
+// if we find a previously set name value, display it
+if (storedYourPokemon){
+    console.log("Found a saved your pokemon.");
+	yourPokemonField.value = storedYourPokemon;
+}
+
+// if we find a previously set name value, display it
+if (storedEnemyPokemon){
+    console.log("Found a saved enemy pokemon.");
+	enemyPokemonField.value = storedEnemyPokemon;
+}
+
+// Set pokemon to either loaded ones or defaults
+getData(makePokeURL(yourPokemonField.value));
+getData(makePokeURL(enemyPokemonField.value));
+
+// if we find a previously set background value, display it
+if (storedChosenBackground){
+    console.log("Found a saved background");
+	chosenBackgroundSelect.querySelector(`option[value='${storedChosenBackground}']`).selected = true;
+    contentElement.style.backgroundImage = `url(images/${storedChosenBackground})`;; // Set the image of the background
+}
+
+yourPokemonField.onchange = e=>{ localStorage.setItem(yourPokemonKey, e.target.value); };
+enemyPokemonField.onchange = e=>{ localStorage.setItem(enemyPokemonKey, e.target.value); };
+chosenBackgroundSelect.onchange = e=>{ 
+    console.log("Saved a new background.");
+    localStorage.setItem(chosenBackgroundKey, e.target.value); 
+    contentElement.style.backgroundImage = `url(images/${storedChosenBackground})`; // Set the image of the background
+};
+
 // 3
 function searchButtonClicked() {
     console.log("searchButtonClicked() called");
 
     let contentElement = document.querySelector('#content');
     let backgroundOption = document.querySelector("#background-option").value;
-    contentElement.style.backgroundImage = `url(../images/${backgroundOption})`;
-    console.log(`Changed background to image at ../images/${backgroundOption}`);
-
-
-    const POKEAPI_URL = "https://pokeapi.co/api/v2/";
+    contentElement.style.backgroundImage = `url(images/${backgroundOption})`;
+    console.log(`Changed background to image at /images/${backgroundOption}`);
 
     whichPokemonCounter = 0;
-
-    firsturl = POKEAPI_URL;
-    secondurl = POKEAPI_URL;
     
-
     let firstterm = document.querySelector("#firstsearchterm").value;
     let secondterm = document.querySelector("#secondsearchterm").value;
     displayTerm = firstterm + " and " + secondterm;
 
-    firstterm = firstterm.trim().toLowerCase();
-    secondterm = secondterm.trim().toLowerCase();
-
-    firstterm = encodeURIComponent(firstterm);
-    secondterm = encodeURIComponent(secondterm);
-
-    if (firstterm.length < 1) return;
-    if (secondterm.length < 1) return;
-
-    firsturl += "pokemon/" + firstterm;
-    secondurl += "pokemon/" + secondterm;
-
+    let firstURL = makePokeURL(firstterm);
+    let secondURL = makePokeURL(secondterm);
 
     document.querySelector("#status").innerHTML = "<b>Searching for '" + displayTerm + "'</b>";
 
-    console.log("first url: " + firsturl);
-    console.log("second url: " + secondurl);
+    console.log("first url: " + firstURL);
+    console.log("second url: " + secondURL);
 
     // 12 Request data!
-    getData(firsturl);
-    getData(secondurl);
+    getData(firstURL);
+    getData(secondURL);
+}
+
+function makePokeURL(term){
+    if (term.length < 1) return;
+    term = term.trim().toLowerCase();
+    term = encodeURIComponent(term);
+    return "https://pokeapi.co/api/v2/pokemon/" + term;
 }
 
 function getData(url) {

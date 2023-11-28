@@ -4,8 +4,7 @@
 	<meta charset="utf-8" />
  	<title>Pokemon Batteler</title>
 	<link rel="stylesheet" type="text/css" href="style/main.css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/main.js" defer></script>
 
   
 </head>
@@ -15,22 +14,16 @@
 	<hr>
 </header>
 
-<h2>Your battle:</h2>
-<div id="content">
-	<img src="images/no-image-found.png" alt="The enemy pokemon" id="enemy-pokemon" width=20%>
-	<img src="images/no-image-found.png" alt="Your pokemon" id="your-pokemon" width=20%>
-</div>
-
 <div class="widgets-group">
 	<div class="widgets">
-		Your Pokemon: <input id="firstsearchterm" type="text" size="20" maxlength="30" autofocus value="Pikachu" />
+		Your Pokemon: <input id="firstsearchterm" type="text" size="20" maxlength="30" value="Pikachu" />
 		<br>
-		Enemy Pokemon: <input id="secondsearchterm" type="text" size="20" maxlength="30" autofocus value="Pikachu" />
+		Enemy Pokemon: <input id="secondsearchterm" type="text" size="20" maxlength="30" value="Pikachu" />
 	</div>
 
 	<div class="widgets">
 		<select id="background-option">
-			<option value="field-background.png" selected>Field</option>
+			<option value="field-background.png">Field</option>
 			<option value="beach-background.jpg">Beach</option>
 			<option value="ice-background.png">Ice</option>
 			<option value="mountains-background.jpg">Mountains</option>
@@ -43,6 +36,11 @@
 	<div id="status">Ready to Search!</div>
 </div>
 
+<h2>Your battle:</h2>
+<div id="content">
+	<img src="images/no-image-found.png" alt="The enemy pokemon" id="enemy-pokemon" width=20%>
+	<img src="images/no-image-found.png" alt="Your pokemon" id="your-pokemon" width=20%>
+</div>
 
 </body>
 </html>
